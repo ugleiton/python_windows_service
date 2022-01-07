@@ -1,10 +1,14 @@
-1. Requisitos
-
-    pip install pywin32
+1. Instalar virtualenv windows
+```
+python -mvenv venv
+venv\Scripts\activate.bat
+pip install pywin32
+```
 
 2. Verificar DLL do Python
-    * Na pasta de instalação do python "..\Lib\site-packages\win32" deve ter uma DLL com nome: "pywintypes37.dll" no meu caso é a "pywintypes37" pois estou usando o python 3.7, este número irá variar de acordo com sua versão;
-    * Caso a DLL não esteja na pasta citada acima verifique na seguinte pasta "..\Lib\site-packages\pywin32_system32", procure a DLL e faça uma cópia para a pasta         "..\Lib\site-packages\win32";
+   
+    - Certifique-se de ter o arquivo pywintypes37.dll no diretorio: *venv\Lib\site-packages\win32* ("37" é a versão da sua instalação Python). 
+    - Se o diretorio não tem esse arquivo pegue-o de: *venv\Lib\site-packages\pywin32_system32\pywintypes37.dll* e cole em *venv\Lib\site-packages\win32*
 
 3. Instalação 
 ```
@@ -21,10 +25,15 @@ python my_service_windows.py remove
 python my_service_windows.py update
 ```
 
-6. Controle
+6. Controle do serviço
 ```   
 net start MyServicePython
 net stop MyServicePython
+```
+
+7. Debug
+```
+python my_service_windows.py debug
 ```
 
 
@@ -34,3 +43,4 @@ Referencias:
 - https://thepythoncorner.com/posts/2018-08-01-how-to-create-a-windows-service-in-python/
 - https://github.com/eduardofaneli/PythonWinService
 - https://github.com/SublimeText/Pywin32/blob/master/lib/x32/win32/lib/win32serviceutil.py
+- https://stackoverflow.com/a/70625723/9930021
